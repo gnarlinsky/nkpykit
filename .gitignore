@@ -1,0 +1,5 @@
+*.swp
+
+# virtualenv files and activate link
+venv
+activate
