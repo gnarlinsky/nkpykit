@@ -15,9 +15,9 @@ class callinfo(object):
     calls' decorator at
     http://wiki.python.org/moin/PythonDecoratorLibrary#Counting_function_calls
 
-    Note -- since we need to maintain state, using a class decorator, rather
-    than a function decorator.
-    """
+    Note: one reason to use a class (rather than a function) decorator here is
+    because we need to maintain state for the call counts. """
+
     # Keep track of the decorated/registered functions
     __instances = {}
 
@@ -41,9 +41,13 @@ class callinfo(object):
         # Gather information for building call count and arg names/values info
         #######################################################################
         all_arg_names, _, _, default_arg_vals = inspect.getargspec(self.__func)
-        # Not counting num items in kwargs because it may be empty if no
-        # keyword arugments were explicitly passed in, so counting but the
-        # number of *default* arguments
+
+        # Determine number of required arguments by subtracting number of
+        # keyword arguments from total argument count. Note: to determine the
+        # number of keyword arguments, we won't count the number
+        # of items in kwargs dict because it may be empty if no keyword
+        # arugments were explicitly specified; so counting the number of
+        # *default* arguments.
         try:  # in case default_arg_vals is actually None
             num_just_pos_args = len(all_arg_names) - len(default_arg_vals)
         except:
@@ -119,5 +123,5 @@ class callinfo(object):
 
     @staticmethod
     def all_func():
-        """ Returns list of all registered/decorated functions. """
+        """ Return list of all registered/decorated functions. """
         return callinfo.__instances
