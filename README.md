@@ -11,7 +11,7 @@ Keeps track of and prints call count and parameter name/value info, with multipl
 
 **Count individual function calls:**
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(): pass
@@ -26,7 +26,7 @@ a(): call #3 ( )
 
 **Ask for all decorated functions' call counts:**
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(): pass
@@ -42,7 +42,7 @@ a(): call #3 ( )
 
 **Reset an individual function's call count:**
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(): pass
@@ -60,7 +60,7 @@ a(): call #3 ( )
 
 **Reset all decorated functions' call counts:**
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(): pass
@@ -78,7 +78,7 @@ a(): call #3 ( )
 
 **See all currently registered/decorated functions:**
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(): pass
@@ -87,13 +87,13 @@ a(): call #3 ( )
 ... def b(): pass
 ...
 >>> callinfo.all_func()
-{<function a at 0x1005c52a8>: <nkpykit.dec.callinfo object at 0x1004ea450>,
-<function b at 0x1005c5668>: <nkpykit.dec.callinfo object at 0x1004f6910>}
+{<function a at 0x1005c52a8>: <nkpykit.callinfo object at 0x1004ea450>,
+<function b at 0x1005c5668>: <nkpykit.callinfo object at 0x1004f6910>}
 ```
 
 **Keep track of parameter names and values, including default keyword arguments:** 
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def a(foo, key1=1, key2=2, key3=3):
@@ -106,7 +106,7 @@ hi 1 200 3
 
 Here's what happens with recursion:
 ``` python
->>> from nkpykit.dec import callinfo
+>>> from nkpykit import callinfo
 >>>
 >>> @callinfo
 ... def merge(left, right):
@@ -151,25 +151,18 @@ merge(): call #4 ( left = [0], right = [6, 7], )
 merge(): call #5 ( left = [3, 4, 8], right = [0, 6, 7], )
 [0, 3, 4, 6, 7, 8]
 ```
+
+Here's a screenshot to show the colors:
+
+![colors in terminal](https://f.cloud.github.com/assets/4472418/1294903/c262322a-3096-11e3-8c8a-742b5f644d15.png)
+
+
 (The merge sort code is based on http://en.literateprograms.org/Merge_sort_(Python)?oldid=19008.)
 
-More examples will be in the test files.
-
-### Other decorators
-*(in progress)*
 
 
-Not decorators
-----------------
-*(in progress)*
-
-
-Tests
-----------------
-### ``callinfo``
-*(in progress)*
-
-
-Future/Wishlist
-----------------
-*(currently being drafted, will be here and/or in Issues)*
+Future/Wishlist/In-progress
+----------------------------
+* other decorators
+* tests
+* not-decorators
